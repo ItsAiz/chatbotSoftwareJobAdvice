@@ -78,6 +78,7 @@ def echo_all(message):
                                  candidate.communication_skills))
                 bot.reply_to(message,
                              "Would you like to view online certificate-courses to improve your skills?(yes/no)")
+                bot.register_next_step_handler(message, certificate_response)
 
             else:
                 bot.reply_to(message, "According with your provided information, you can apply to next jobs")
@@ -96,6 +97,40 @@ def echo_all(message):
                         i.requirement_communication_skills) + "\n")
     except:
         bot.reply_to(message, "Error!! Verify your inputs.\n"+ questions[actualQuestion])
+
+def certificate_response(message):
+    if 'yes' or 'y' in message.text.lower():
+        bot.send_message(message.chat.id, "Do you prefer a paid or free online course (1/2)")
+        bot.register_next_step_handler(message, free_pay)
+    elif 'no' or 'n' in message.text.lower():
+        bot.reply_to(message,
+                     "Thanks for using our tool. See u soon!!")
+    else:
+        bot.reply_to(message, "Error!! Verify your inputs. Try again...")
+        bot.reply_to(message,
+                     "Would you like to view online certificate-courses to improve your skills?(yes/no)")
+        bot.register_next_step_handler(message, certificate_response)
+
+def free_pay(message):
+    try:
+        if int(message.text) == 1:
+            bot.send_message(message.chat.id, "¡Brilliant! We recommend the following free online courses:\n"
+                                              "- Introduction to Software Engineering, offered by Coursera\n"
+                                              "- Fundamentals of Object Oriented Programming, offered by ed")
+            bot.send_message(message.chat.id,
+                             "Thanks for using our tool. See u soon!!")
+        if int(message.text) == 2:
+            bot.send_message(message.chat.id, "¡Brilliant! We recommend the following free online courses:\n"
+                                              "- Software Engineering Fundamentals, offered by Udemy\n"
+                                              "- Mobile App Development, offered by Coursera\n"
+                                              "- Advanced Software Engineering, offered by Udacity\n"
+                                              "- Software design and architecture, offered by edX")
+            bot.send_message(message.chat.id,
+                         "Thanks for using our tool. See u soon!!")
+    except:
+        bot.reply_to(message, "Error!! Verify your inputs. Try again...")
+        bot.send_message(message.chat.id, "Do you prefer a paid or free online course (1/2)")
+        bot.register_next_step_handler(message, free_pay)
 
 def restart_candidate():
     candidate.name = ""
