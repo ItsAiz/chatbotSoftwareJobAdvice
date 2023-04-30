@@ -23,8 +23,14 @@ def createJobs():
     job6 = Job("Boladare", "Senior in software development", "Master for software testing", 18, 2, 6, 8, 7)
     job7 = Job("The software house", "Web application developer", "Development of services and web applications with Node.js, React and php", 18, 1, 6, 8, 7)
     job8 = Job("Sidebench", "Front-end Developer", "Front-end development to improve UX of web and mobile applications", 18, 2, 6, 8, 7)
+    job9 = Job("Google", "Software Engineer", "Developing and maintaining software products and systems", 20, 4, 8, 9,9)
+    job10 = Job("Amazon", "Data Scientist","Analyzing and interpreting complex data sets to provide insights for business decisions", 22, 3, 7, 9,8)
+    job11 = Job("Microsoft", "Cloud Solutions Architect","Designing and implementing cloud-based solutions for businesses", 25, 5, 9, 7, 9)
+    job12 = Job("Apple", "iOS Developer", "Developing and maintaining iOS mobile applications", 18, 2, 6, 9, 8)
+    job13 = Job("Facebook", "Product Manager","Defining and executing product strategy for Facebook's products and services", 22, 4, 8, 9, 9)
     jobs.append(job1), jobs.append(job2), jobs.append(job3), jobs.append(job4), jobs.append(job5), jobs.append(job6)
-    jobs.append(job7), jobs.append(job8)
+    jobs.append(job7), jobs.append(job8), jobs.append(job9), jobs.append(job10), jobs.append(job11), jobs.append(job12)
+    jobs.append(job13)
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['help', 'start'])
@@ -116,7 +122,12 @@ def free_pay(message):
         if int(message.text) == 1:
             bot.send_message(message.chat.id, "¡Brilliant! We recommend the following free online courses:\n"
                                               "- Introduction to Software Engineering, offered by Coursera\n"
-                                              "- Fundamentals of Object Oriented Programming, offered by ed")
+                                              "- Fundamentals of Object Oriented Programming, offered by ed\n"
+                                              "- Algorithms and Data Structures, offered by Stanford University\n"
+                                              "- Machine Learning, offered by Andrew Ng on Coursera\n"
+                                              "- Programming in Python, offered by Codecademy\n"
+                                              "- Complete web development, offered by FreeCodeCamp\n"
+                                              "- Competitive Programming, offered by TopCoder")
             bot.send_message(message.chat.id,
                              "Thanks for using our tool. See u soon!!")
         if int(message.text) == 2:
@@ -124,7 +135,14 @@ def free_pay(message):
                                               "- Software Engineering Fundamentals, offered by Udemy\n"
                                               "- Mobile App Development, offered by Coursera\n"
                                               "- Advanced Software Engineering, offered by Udacity\n"
-                                              "- Software design and architecture, offered by edX")
+                                              "- Software design and architecture, offered by edX\n"
+                                              "- Full Stack Web Developer, powered by Udacity\n"
+                                              "- Mobile App Development, offered by Treehouse\n"
+                                              "- Programming, offered by Pluralsight\n"
+                                              "- Game Development, offered by Unity\n"
+                                              "- Cybersecurity, offered by CybraryA\n"
+                                              "- Solutions Architect Certification, offered by Amazon Web Services\n"
+                                              "- Data Analysis with Python, offered by DataCamp")
             bot.send_message(message.chat.id,
                          "Thanks for using our tool. See u soon!!")
     except:
